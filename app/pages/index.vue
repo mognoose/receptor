@@ -80,6 +80,7 @@ const filteredRecipes = computed(() => {
   .recipes .card article {
     display: flex;
     flex-direction: column;
+    max-width: 400px;
     height: 550px;
     overflow: hidden;
     border-radius: 8px;
