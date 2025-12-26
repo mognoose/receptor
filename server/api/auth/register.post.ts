@@ -1,10 +1,13 @@
-import { initializeApp, getApps, cert, ServiceAccount } from 'firebase-admin/app';
-import { getAuth as getAdminAuth } from 'firebase-admin/auth';
-import serviceAccount from '../../../receptor-14036-firebase-adminsdk-fbsvc-798cae91d0.json';
+import { initializeApp, getApps, cert } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
 
 if (!getApps().length) {
   initializeApp({
-    credential: cert(serviceAccount as ServiceAccount)
+    credential: cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    }),
   });
 }
 
@@ -28,7 +31,7 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const userRecord = await getAdminAuth().createUser({
+    const userRecord = await getAuth().createUser({
       email,
       password,
     });
