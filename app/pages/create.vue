@@ -35,10 +35,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
-definePageMeta({
-  middleware: 'auth'
-});
+import { useAuth } from '~~/composables/useAuth';
 
 const recipe = ref({
   title: '',
@@ -97,6 +94,14 @@ async function handleFileUpload(event: Event) {
 async function createRecipe() {
   error.value = null;
   isSubmitting.value = true;
+
+  const { user } = useAuth();
+  if (!user.value) {
+    error.value = 'You must be logged in to create a recipe.';
+    isSubmitting.value = false;
+    return;
+  }
+
   try {
     const result = await $fetch('/api/recipes', {
       method: 'POST',

@@ -52,9 +52,20 @@ export const useAuth = () => {
     });
   }
 
-  const registerWithEmail = (email, password) => {
-    if (!auth) return Promise.reject(new Error('Firebase Auth not available.'));
-    return createUserWithEmailAndPassword(auth, email, password);
+  const registerWithEmail = async (email, password, invitationKey) => {
+    try {
+      // Call our backend endpoint to register the user with invitation key
+      await $fetch('/api/auth/register', {
+        method: 'POST',
+        body: { email, password, invitationKey },
+      });
+      // After successful server-side registration, sign in the user on the client
+      if (!auth) return Promise.reject(new Error('Firebase Auth not available for client-side sign-in.'));
+      return signInWithEmailAndPassword(auth, email, password);
+    } catch (e: any) {
+      // Re-throw the error to be caught by the calling component
+      throw new Error(e.data?.statusMessage || e.message || 'Registration failed.');
+    }
   };
 
   const loginWithEmail = (email, password) => {

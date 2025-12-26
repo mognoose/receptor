@@ -7,6 +7,10 @@
         <input type="email" id="email" v-model="email" required>
       </div>
       <div class="form-group">
+        <label for="invitation-key">Invitation Key</label>
+        <input type="text" id="invitation-key" v-model="invitationKey" required>
+      </div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="password" required>
       </div>
@@ -31,6 +35,7 @@ const { registerWithEmail } = useAuth();
 const email = ref('');
 const password = ref('');
 const passwordConfirm = ref('');
+const invitationKey = ref('');
 const error = ref<string | null>(null);
 const isSubmitting = ref(false);
 
@@ -42,7 +47,7 @@ async function handleRegister() {
   isSubmitting.value = true;
   error.value = null;
   try {
-    await registerWithEmail(email.value, password.value);
+    await registerWithEmail(email.value, password.value, invitationKey.value);
     await navigateTo('/');
   } catch (e: any) {
     error.value = e.message;

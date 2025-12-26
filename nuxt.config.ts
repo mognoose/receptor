@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   css: ['@picocss/pico'],
   runtimeConfig: {
     imagekitPrivateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+    invitationKey: process.env.INVITATION_KEY,
     public: {
       imagekitPublicKey: process.env.IMAGEKIT_PUBLIC_KEY,
       imagekitUrlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
