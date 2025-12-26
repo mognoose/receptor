@@ -31,3 +31,25 @@ const { data: recipe, pending, error } = await useFetch<Recipe>(`/api/recipes/${
     transform: (data) => data.recipe,
 });
 </script>
+
+<style scoped>
+    article div {
+        img {
+            width: 100%;
+            aspect-ratio: 2 / 1;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 8px;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        p {
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+    }
+</style>

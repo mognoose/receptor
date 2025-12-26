@@ -53,11 +53,68 @@ const filteredRecipes = computed(() => {
 <style scoped>
   .container .recipes {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
-    a, p {
-      text-decoration: none;
-      color: inherit;
+  }
+  .recipes .card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recipes .card article:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+
+    h3 {
+      color: var(--pico-primary-hover);
     }
+
+    p {
+      color: var(--pico-text-color);
+    }
+  }
+
+  .recipes .card article {
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    overflow: hidden;
+    border-radius: 8px;
+    padding: 0;
+  }
+
+  .recipes .card article img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .recipes .card article h3 {
+    flex-shrink: 0;
+    margin: 0.5rem 1rem 0.25rem 1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--pico-primary);
+  }
+
+  .recipes .card article p {
+    flex-grow: 1;
+    margin: 0 1rem 1rem 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    color: var(--pico-muted-color);
   }
 </style>
