@@ -50,6 +50,7 @@ const { data: recipe, pending, error } = await useFetch<Recipe>(`/api/recipes/${
         p {
             margin-top: 1rem;
             line-height: 1.6;
+            white-space: break-spaces;
         }
     }
 </style>
