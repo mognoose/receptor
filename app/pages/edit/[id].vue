@@ -16,6 +16,25 @@
         <img v-if="imageUrl" :src="imageUrl" alt="Recipe Image Preview" style="max-width: 200px; margin-top: 1rem;" />
       </div>
       <div class="form-group">
+        <label for="categories">{{ t('recipe.categories') }}</label>
+        <div class="category-input-group">
+          <input
+            type="text"
+            id="newCategory"
+            v-model="newCategory"
+            @keyup.enter="addCategory"
+            :placeholder="t('recipe.add_category')"
+          >
+          <button type="button" @click="addCategory">{{ t('recipe.add_category') }}</button>
+        </div>
+        <div class="categories-list">
+          <span v-for="(cat, index) in categories" :key="index" class="category-pill">
+            {{ cat }}
+            <button type="button" @click="removeCategory(index)" class="category-remove">x</button>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="ingredients">{{ t('recipe.ingredients') }}</label>
         <textarea id="ingredients" v-model="recipe.ingredients" required></textarea>
         <small>{{ t('recipe.ingredient.hint') }}</small>
@@ -46,6 +65,9 @@ const recipe = ref({
 const imageUrl = ref<string | null>(null);
 const imageFile = ref<File | null>(null);
 
+const categories = ref<string[]>([]);
+const newCategory = ref('');
+
 const error = ref<string | null>(null);
 const isSubmitting = ref(false);
 
@@ -61,6 +83,7 @@ onMounted(async () => {
       recipe.value.ingredients = fetchedRecipe.recipe.ingredients.join('\n');
       recipe.value.instructions = fetchedRecipe.recipe.instructions;
       imageUrl.value = fetchedRecipe.recipe.imageUrl;
+      categories.value = fetchedRecipe.recipe.categories || []; // Populate categories
     }
   } catch (e) {
     error.value = t('error.unknown');
@@ -76,6 +99,17 @@ function handleFileUpload(event: Event) {
   }
 }
 
+function addCategory() {
+  if (newCategory.value.trim() !== '' && !categories.value.includes(newCategory.value.trim())) {
+    categories.value.push(newCategory.value.trim());
+    newCategory.value = '';
+  }
+}
+
+function removeCategory(index: number) {
+  categories.value.splice(index, 1);
+}
+
 async function updateRecipe() {
   error.value = null;
   isSubmitting.value = true;
@@ -85,6 +119,7 @@ async function updateRecipe() {
     const recipePayload = {
       ...recipe.value,
       ingredients: recipe.value.ingredients.split('\n').filter(i => i.trim() !== ''),
+      categories: categories.value, // Add categories to payload
     };
     formData.append('recipe', JSON.stringify(recipePayload));
     if (imageFile.value) {
@@ -98,7 +133,8 @@ async function updateRecipe() {
 
     if (result && result.recipe && result.recipe.id) {
         await navigateTo(`/${result.recipe.id}`);
-    } else {
+    }
+    else {
         error.value = t('error.update.failed');
     }
 
@@ -167,5 +203,47 @@ button:disabled {
 .error-message {
   color: #e74c3c;
   margin-top: 1rem;
+}
+
+/* Category specific styles */
+.category-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-input-group input {
+  flex-grow: 1;
+}
+
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.category-pill .category-remove {
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.category-pill .category-remove:hover {
+  color: #000;
 }
 </style>

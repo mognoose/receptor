@@ -1,4 +1,3 @@
-
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -7,6 +6,8 @@ export default defineEventHandler(async (event) => {
     const recipesDir = path.join(process.cwd(), 'server', 'recipes');
     const recipeDirs = await fs.readdir(recipesDir, { withFileTypes: true });
     
+    let allCategories: string[] = [];
+
     const recipes = await Promise.all(
       recipeDirs
         .filter(dirent => dirent.isDirectory())
@@ -24,6 +25,11 @@ export default defineEventHandler(async (event) => {
               recipe.imageUrl = `/api/recipes/${recipe.id}/image`;
             }
 
+            // Collect categories
+            if (recipe.categories && Array.isArray(recipe.categories)) {
+                allCategories = allCategories.concat(recipe.categories);
+            }
+
             return recipe;
           } catch (error) {
             return null;
@@ -32,8 +38,9 @@ export default defineEventHandler(async (event) => {
     );
 
     const validRecipes = recipes.filter(recipe => recipe !== null);
+    const uniqueCategories = Array.from(new Set(allCategories));
 
-    return { recipes: validRecipes };
+    return { recipes: validRecipes, categories: uniqueCategories }; // Return categories as well
   } catch (error) {
     console.error(error);
     throw createError({

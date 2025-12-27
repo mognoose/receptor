@@ -4,6 +4,11 @@
         <div v-else-if="recipe">
             <h1>{{ recipe.title }}</h1>
             <p>{{ recipe.description }}</p>
+            <div v-if="recipe.categories && recipe.categories.length" class="categories-list">
+                <span v-for="(cat, index) in recipe.categories" :key="index" class="category-pill">
+                    {{ cat }}
+                </span>
+            </div>
             <img v-if="recipe.imageUrl" :src="recipe.imageUrl" alt="Recipe Image" />
             <div class="content">
                 <ul>
@@ -26,12 +31,12 @@
 import { t } from '../../utils/i18n';   
 
 interface Recipe {
-    recipe: Recipe | Promise<Recipe>;
     title: string;
     description: string;
     imageUrl?: string;
     ingredients: string[];
     instructions: string;
+    categories?: string[]; // Add categories to the interface
 }
 
 // You can fetch data based on the dynamic id here
@@ -98,5 +103,22 @@ const { data: recipe, pending, error } = await useFetch<Recipe>(`/api/recipes/${
                 }
             }
         }
+    }
+    /* Category specific styles - copied from create.vue */
+    .categories-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .category-pill {
+        display: inline-flex;
+        align-items: center;
+        background-color: #e0e0e0;
+        border-radius: 12px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.875rem;
+        color: #333;
     }
 </style>

@@ -47,7 +47,8 @@ export default defineEventHandler(async (event) => {
     const newRecipe = {
       ...recipeData,
       id: newId,
-      imageUrl: `/api/recipes/${newId}/image`
+      imageUrl: `/api/recipes/${newId}/image`,
+      categories: recipeData.categories || [],
     };
 
     const recipeJsonPath = path.join(newRecipeDir, 'recipe.json');
