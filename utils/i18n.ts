@@ -16,6 +16,9 @@ const translations = {
     'recipe.instructions': 'Instructions',
     'recipe.create.button': 'Create Recipe',
     'recipe.create.submitting': 'Creating...',
+    'edit.recipe.title': 'Edit Recipe',
+    'recipe.update.button': 'Update Recipe',
+    'recipe.update.submitting': 'Updating...',
     'recipe.ingredient.hint': 'One ingredient per line.',
     'recipe.back_to_recipes': 'Back to recipes',
     'recipe.edit_recipe': 'Edit Recipe',
@@ -23,6 +26,7 @@ const translations = {
     'recipe.publish_recipe': 'Publish Recipe',
     'error.image.required': 'Please select an image.',
     'error.create.failed': 'Failed to create recipe: invalid response from server.',
+    'error.update.failed': 'Failed to update recipe: invalid response from server.',
     'error.unknown': 'An unknown error occurred.',
     'error.invalid.multipart': 'Request must be of type multipart/form-data.'
   },
@@ -40,6 +44,9 @@ const translations = {
     'recipe.instructions': 'Ohjeet',
     'recipe.create.button': 'Luo resepti',
     'recipe.create.submitting': 'Luodaan...',
+    'edit.recipe.title': 'Muokkaa reseptiä',
+    'recipe.update.button': 'Päivitä resepti',
+    'recipe.update.submitting': 'Päivitetään...',
     'recipe.ingredient.hint': 'Yksi ainesosa per rivi.',
     'recipe.back_to_recipes': 'Takaisin resepteihin',
     'recipe.edit_recipe': 'Muokkaa reseptiä',
@@ -47,6 +54,7 @@ const translations = {
     'recipe.publish_recipe': 'Julkaise resepti',
     'error.image.required': 'Valitse kuva.',
     'error.create.failed': 'Reseptin luominen epäonnistui: virheellinen vastaus palvelimelta.',
+    'error.update.failed': 'Reseptin päivittäminen epäonnistui: virheellinen vastaus palvelimelta.',
     'error.unknown': 'Tuntematon virhe tapahtui.',
     'error.invalid.multipart': 'Pyynnön on oltava tyyppiä multipart/form-data.'
   }
