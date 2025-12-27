@@ -1,5 +1,8 @@
 {
   "name": "receptor",
+  "version": "1.0.0",
+  "description": "A recipe management application built with Nuxt.js and Electron, featuring localization, image uploads, category management, and a desktop experience.",
+  "author": "Csaba Szilagyi",
   "type": "module",
   "private": true,
   "main": "dist_electron/main.js",
