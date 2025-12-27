@@ -4,37 +4,15 @@
             <li><NuxtLink to="/" class="logo-link"><img class="logo" src="/img/receptor-logo.svg"><strong>Receptor</strong></NuxtLink></li>
         </ul>
         <ul>
-            <li><NuxtLink to="/">Home</NuxtLink></li>
-            <li><NuxtLink to="/about">About</NuxtLink></li>
-
-            <template v-if="user">
-                <li><NuxtLink to="/create">New Recipe</NuxtLink></li>
-                <li><a href="#" @click.prevent="handleLogout">Logout</a></li>
-                <li>
-                    <div class="user-icon-circle">
-                        <svg class="user-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                </li>
-            </template>
-            <template v-else>
-                <li><NuxtLink to="/login">Login</NuxtLink></li>
-                <li><NuxtLink to="/register">Register</NuxtLink></li>
-            </template>
+            <li><NuxtLink to="/">{{ t('nav.home') }}</NuxtLink></li>
+            <li><NuxtLink to="/create">{{ t('nav.create') }}</NuxtLink></li>
         </ul>
     </nav>
 </template>
 
 <script setup lang="ts">
-import { useAuth } from '~~/composables/useAuth';
+import { t } from '../../../utils/i18n';
 
-const { user, logout } = useAuth();
-
-const handleLogout = async () => {
-    await logout();
-    await navigateTo('/login');
-};
 </script>
 
 <style>

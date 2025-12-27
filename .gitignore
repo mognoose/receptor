@@ -25,3 +25,7 @@ logs
 
 # Service account key
 receptor-14036-firebase-adminsdk-fbsvc-798cae91d0.json
+
+# Electron
+dist_electron/
+dist_electron_build/

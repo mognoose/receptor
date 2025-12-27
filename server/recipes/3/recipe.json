@@ -1,0 +1,18 @@
+{
+  "title": "Rapusalaatti",
+  "description": "Tämä rapusalaatti on mainio lisuke, alkupala tai täyte esimerkiksi leivän päälle. Resepti on nopea valmistaa, sillä se hyödyntää mikroaaltouunia valmistusprosessin nopeuttamiseksi. Salaatti saa kermaisen koostumuksen Hellmansin majoneesin ja smetanan yhdistelmästä, ja maku tasapainotetaan sitruunamehulla sekä mausteilla.\n\n",
+  "ingredients": [
+    "Sipuli - 1 kpl",
+    "Katkarapua - 200 g",
+    "Pakastevihannessekoitus Herne-Kukkakaali-Porkkana-Lanttu - 250 g",
+    "Hellmans majoneesi - 300 g",
+    "Smetanaa - 100 g",
+    "Sitruuna - 1/2 kpl",
+    "Sokeria - 3 rkl",
+    "Pippuria - maun mukaan",
+    "suolaa - maun mukaan"
+  ],
+  "instructions": "Pilko sipuli kuutioiksi\nLämmitä sipuli mikrossa lautasella peitettynä 2 min\nLisää sulatetut katkaravut sipulin joukkoon mikroon\nLisää vihannekset ja jatka mikrossa lämmittämistä\nSiivilöi neste pois\nLisää majoneesiin smetana, pippurijauhe, sokeri, suola, sitruunamehu puristettuna\nLisää jäähtyneet sipuli, ravut ja vihannekset majoneesiin",
+  "id": 3,
+  "imageUrl": "/api/recipes/3/image"
+}

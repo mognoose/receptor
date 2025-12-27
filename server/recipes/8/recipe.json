@@ -1,0 +1,18 @@
+{
+  "title": "Olivier salad",
+  "description": "Perinteinen slaavilainen perunasalaatti joka tunnetaan myös nimellä Olivye -salaatti",
+  "ingredients": [
+    "perunaa - 6 kpl",
+    "porkkanaa - 6 kpl",
+    "kananmunaa - 12 kpl",
+    "HK Sininen - 2 lenkkiä",
+    "Myrttisen suolakurkut - 6 kpl",
+    "Sipulia - 2 kpl",
+    "Pakasteherneet - 300 g",
+    "Hellmans majoneesi - 400 g",
+    "suolaa - maun mukaan"
+  ],
+  "instructions": "Keitä perunat, porkkanat ja munat kattiloissa.\n\nLeikkaa ainekset kuutioiksi ja lisää ainekset tarjoiluastiaan\n\nMausta suolalla oman maun mukaan.",
+  "id": 8,
+  "imageUrl": "/api/recipes/8/image"
+}

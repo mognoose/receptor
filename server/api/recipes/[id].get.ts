@@ -1,17 +1,5 @@
-import { initializeApp, getApps, cert } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
-
-if (!getApps().length) {
-  initializeApp({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-    }),
-  });
-}
-
-const db = getFirestore();
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export default defineEventHandler(async (event) => {
   const recipeId = event.context.params?.id;
@@ -24,16 +12,28 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const recipeDoc = await db.collection('recipes').doc(recipeId).get();
-
-    if (!recipeDoc.exists) {
+    const recipeDir = path.join(process.cwd(), 'server', 'recipes', recipeId);
+    const recipeJsonPath = path.join(recipeDir, 'recipe.json');
+    
+    try {
+      await fs.access(recipeJsonPath);
+    } catch (error) {
       throw createError({
         statusCode: 404,
         statusMessage: 'Recipe not found',
       });
     }
 
-    const recipe = { id: recipeDoc.id, ...recipeDoc.data() };
+    const content = await fs.readFile(recipeJsonPath, 'utf-8');
+    const recipe = JSON.parse(content);
+
+    // Find image file
+    const imageFiles = await fs.readdir(recipeDir);
+    const imageFile = imageFiles.find(f => f.startsWith('image.'));
+    if (imageFile) {
+      recipe.imageUrl = `/api/recipes/${recipe.id}/image`;
+    }
+
     return { recipe };
   } catch (error: any) {
     if (error.statusCode) {

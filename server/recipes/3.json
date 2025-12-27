@@ -1,0 +1,12 @@
+{
+  "id": 3,
+  "title": "test",
+  "ingredients": [
+    "asd",
+    "asd",
+    "asd"
+  ],
+  "instructions": "asd asd\nasd asd asda\nasd asd asdddsad asd",
+  "description": "asd asd",
+  "imageUrl": ""
+}

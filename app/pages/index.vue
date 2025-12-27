@@ -4,7 +4,7 @@
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="Search..."
+        :placeholder="t('home.search.placeholder')"
         class="searchbox"
       />
     </div>
@@ -14,7 +14,7 @@
       v-for="recipe in filteredRecipes"
       :key="recipe.id"
       class="card"
-      :to="recipe.id"
+      :to="`/${recipe.id}`"
       >
         <article>
           <img v-if="recipe.imageUrl" :src="recipe.imageUrl" :alt="recipe.title" />
@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-
+import { t } from '../../utils/i18n';
 interface Recipe {
     imageUrl: string;
     id: string;

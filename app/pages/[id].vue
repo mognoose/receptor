@@ -11,12 +11,20 @@
                 </ul>
                 <p>{{ recipe.instructions }}</p>
             </div>
+            <footer>
+                <NuxtLink to="/" role="button">{{ t('recipe.back_to_recipes') }}</NuxtLink>
+                <NuxtLink class="secondary" :to="`/edit/${route.params.id}`" role="button">{{ t('recipe.edit_recipe') }}</NuxtLink>
+                <NuxtLink class="secondary" disabled :to="`/delete/${route.params.id}`" role="button">{{ t('recipe.delete_recipe') }}</NuxtLink>
+                <NuxtLink class="secondary" disabled :to="`/publish/${route.params.id}`" role="button">{{ t('recipe.publish_recipe') }}</NuxtLink>
+            </footer>
         </div>
         <div v-else-if="error">Error loading recipe</div>
     </article>
 </template>
 
 <script setup lang="ts">
+import { t } from '../../utils/i18n';   
+
 interface Recipe {
     recipe: Recipe | Promise<Recipe>;
     title: string;
@@ -61,6 +69,16 @@ const { data: recipe, pending, error } = await useFetch<Recipe>(`/api/recipes/${
                 margin-top: 1rem;
                 line-height: 1.6;
                 white-space: break-spaces;
+            }
+        }
+
+        footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--pico-secondary-border);
+
+            a {
+                margin-right: 1rem;
             }
         }
 

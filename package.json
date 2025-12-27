@@ -2,20 +2,42 @@
   "name": "receptor",
   "type": "module",
   "private": true,
+  "main": "dist_electron/main.js",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "npm run build:nuxt && npm run build:electron-main && npm run build:electron",
+    "build:electron": "electron-builder",
+    "build:electron-main": "tsc -p electron/tsconfig.json && echo \"{\\\"type\\\": \\\"commonjs\\\"}\" > dist_electron/package.json",
+    "build:nuxt": "nuxt build",
+    "dev": "concurrently \"npm:dev:nuxt\" \"npm:dev:electron\"",
+    "dev:electron": "wait-on http://localhost:3000 && npm run build:electron-main && cross-env NODE_ENV=development electron .",
+    "dev:nuxt": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
-    "firebase": "^12.7.0",
-    "firebase-admin": "^13.6.0",
-    "imagekit": "^6.0.0",
     "nuxt": "^4.2.2",
     "vue": "^3.5.26",
     "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.9.3",
+    "wait-on": "^9.0.3"
+  },
+  "build": {
+    "appId": "com.example.receptor",
+    "productName": "Receptor",
+    "files": [
+      "dist_electron/**/*",
+      ".output/public/**/*"
+    ],
+    "directories": {
+      "output": "dist_electron_build"
+    }
   }
 }

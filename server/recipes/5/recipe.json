@@ -1,0 +1,24 @@
+{
+  "title": "Possupörkölt persiljaperunoiden kanssa",
+  "description": "Unkarilainen arkipäivän ateria",
+  "ingredients": [
+    "AINESOSAT",
+    "Possupörkölt:",
+    "0.5 kg possunlihaa (kinkku)",
+    "1 kpl iso sipuli",
+    "2-3 valkosipulin kynttä",
+    "1 kpl valkoinen suppilopaprika",
+    "5 rkl auringonkukkaöljyä",
+    "3 tl paprikajauhetta",
+    "2 tl mustapippurijauhetta",
+    "suolaa maun mukaan",
+    "Persiljaperuna:",
+    "1 kg perunaa (kiinteä)",
+    "1 nippu persiljaa",
+    "5 rkl auringonkukkaöljyä",
+    "suolaa maun mukaan"
+  ],
+  "instructions": "VALMISTUS\n\nPossupörkölt:\nLeikataan liha kuutioksi (2cm x 2cm). Sipuli leikataan pieniksi kuutioksi (3mm x 3mm). Otetaan paprikasta siemenkota pois ja leikataan 4-6 osaan.\nSipulin kuullotetaan öljyssä jatkuvasti sekoittaen ilman kantta. Kun sipuli on kullanvärinen, otetaan kattila pois liedeltä. Kun se ei enää kiehu, lisätään sekaan paprikajauhe ja suppilopaprikapalat, ja laitetaan kattila takaisin liedelle. Kun seos kiehuu jälleen, lisätään liha kattilaan pienissä erissä. Kun edellinen lihaerä on paistettu ”harmaaksi”, lisätään seuraava erän. Lopuksi pienennetään lämpöä ja maustetaan murskatulla valkosipulilla, mustapippurilla ja suolalla. Jos lihasta ei irtoa riittävästi nestettä, kaadetaan kattilaan 1-2 dl lämmintä vettä. Kypsennetään valmiiksi miedolla lämmöllä.\n\nPersiljaperunat:\nKuoritaan perunat ja leikataan kuutioksi ja keitetään suolavedessä. Persiljan lehdet leikataan pieneksi. Kun perunat ovat kypsiä, paistetaan persiljasilppu ruoka-öljyssä vähän aikaa eri kattilassa ja kaadetaan niiden päälle valutetut perunakuutiot ja suola. Sekoitetaan hyvin ja tarjotaan kuumana.",
+  "id": 5,
+  "imageUrl": "/api/recipes/5/image"
+}
