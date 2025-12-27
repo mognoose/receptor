@@ -14,7 +14,7 @@
             <footer>
                 <NuxtLink to="/" role="button">{{ t('recipe.back_to_recipes') }}</NuxtLink>
                 <NuxtLink class="secondary" :to="`/edit/${route.params.id}`" role="button">{{ t('recipe.edit_recipe') }}</NuxtLink>
-                <NuxtLink class="secondary" disabled :to="`/delete/${route.params.id}`" role="button">{{ t('recipe.delete_recipe') }}</NuxtLink>
+                <NuxtLink class="secondary" :to="`/delete/${route.params.id}`" role="button">{{ t('recipe.delete_recipe') }}</NuxtLink>
                 <NuxtLink class="secondary" disabled :to="`/publish/${route.params.id}`" role="button">{{ t('recipe.publish_recipe') }}</NuxtLink>
             </footer>
         </div>
