@@ -3,8 +3,8 @@
     <h1>Download Our App</h1>
     <p>Get the latest version of our application for your device.</p>
     <div class="download-links">
-      <a role="button" href="http://sapatti.synology.me/receptor_setup_latest.exe" class="download-button" download="receptor_setup_latest.exe">Download for Windows</a>
-      <a role="button" href="http://sapatti.synology.me/receptor_latest.AppImage" class="download-button" download="receptor_latest.AppImage">Download for Linux</a>
+      <a role="button" href="http://sapatti.synology.me/receptor_setup_latest.exe" class="download-button" download="receptor_setup_latest.exe" target="_blank" rel="noopener noreferrer">Download for Windows</a>
+      <a role="button" href="http://sapatti.synology.me/receptor_latest.AppImage" class="download-button" download="receptor_latest.AppImage" target="_blank" rel="noopener noreferrer">Download for Linux</a>
     </div>
   </div>
 </template>
