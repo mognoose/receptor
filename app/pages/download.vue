@@ -3,11 +3,26 @@
     <h1>Download Our App</h1>
     <p>Get the latest version of our application for your device.</p>
     <div class="download-links">
-      <a role="button" href="http://sapatti.synology.me/receptor_setup_latest.exe" class="download-button" download="receptor_setup_latest.exe" target="_blank" rel="noopener noreferrer">Download for Windows</a>
-      <a role="button" href="http://sapatti.synology.me/receptor_latest.AppImage" class="download-button" download="receptor_latest.AppImage" target="_blank" rel="noopener noreferrer">Download for Linux</a>
+      <a role="button" class="download-button" @click="downloadFile('http://sapatti.synology.me/receptor_setup_latest.exe', 'receptor_setup_latest.exe')">Download for Windows</a>
+      <a role="button" class="download-button" @click="downloadFile('http://sapatti.synology.me/receptor_latest.Appimage', 'receptor_latest.Appimage')">Download for Linux</a>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+const downloadFile = (url: string, filename: string) => {
+  // Creating a temporary anchor element to trigger download
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename; // Set the download attribute to suggest filename
+  link.target = '_blank'; // Open in a new tab/window
+
+  // Append to the body, trigger click, and remove
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+</script>
 
 <style scoped>
 .download-page {
